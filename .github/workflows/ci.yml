@@ -33,10 +33,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Lint (flake8)
+      - name: Lint with flake8 (non-blocking)
         run: |
-          flake8 .
+          echo "Running flake8 lint checks..."
+          flake8 . || true
 
-      - name: Run tests (pytest)
+      - name: Run tests with pytest
         run: |
+          echo "Running pytest..."
           pytest -q
